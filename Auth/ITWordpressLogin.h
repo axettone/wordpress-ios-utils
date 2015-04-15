@@ -30,5 +30,6 @@
 @interface ITWordpressLogin : NSObject
 @property (copy) NSURL* webSiteUrl;
 -(id)initWithWebSite:(NSURL*)webSiteUrl;
--(void)performLoginWithUsername:(NSString*)username andPassword:(NSString*)password completionHandler:(void(^)(NSURLResponse*,NSData*,NSError*))completion;
+-(void)performLoginWithUsername:(NSString*)username andPassword:(NSString*)password completionHandler:(void(^)(NSURLResponse* response,NSData* data,NSError* error))completion;
+-(void)performLogout:(void(^)(NSURLResponse* response,NSData* data,NSError* error))completion;
 @end

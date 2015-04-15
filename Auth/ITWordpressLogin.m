@@ -49,4 +49,16 @@
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:completion];
     
 }
+-(void)performLogout:(void (^)(NSURLResponse *, NSData *, NSError *))completion{
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:self.webSiteUrl];
+    NSString *post = [NSString stringWithFormat:@"&action=logout"];
+    NSData* postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    NSString *postLength = [NSString stringWithFormat:@"%d",[postData length]];
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request setHTTPBody:postData];
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:completion];
+}
 @end
